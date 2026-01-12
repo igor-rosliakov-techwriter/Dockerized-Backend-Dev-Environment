@@ -9,7 +9,7 @@ This repository demonstrates a typical local backend setup:
 - **Redis** — queue storage (list) used for background processing
 - **Worker** — consumes jobs from Redis and updates task status (implemented in DAY3)
 
-## Data flow (DAY2)
+## Data flow
 1. Client sends `POST /tasks`
 2. API writes a new row into Postgres (`tasks` table) with status `queued`
 3. API pushes a job message to Redis list (queue)
