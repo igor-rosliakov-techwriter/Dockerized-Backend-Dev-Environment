@@ -1,12 +1,21 @@
 from uuid import uuid4
+from uuid import UUID
 
 from fastapi import FastAPI, HTTPException
 
 from app.models import TaskCreate, TaskOut
-from app.db import init_db, ping_db, create_task
+from app.db import init_db, ping_db, create_task, get_task
 from app.queue import ping_redis, enqueue_job
 
 app = FastAPI(title="dockerized-backend-dev-env", version="0.1.0")
+
+
+@app.get("/tasks/{task_id}", response_model=TaskOut)
+def get_tasks(task_id: UUID):
+    row = get_task(task_id)
+    if not row:
+        raise HTTPException(status_code=404, detail="Task not found")
+    return row
 
 
 @app.on_event("startup")
