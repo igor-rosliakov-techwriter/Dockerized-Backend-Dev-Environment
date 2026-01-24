@@ -93,7 +93,7 @@ High-level flow:
   Postgres (status update)
   ```
 
-Details: (docs/01-architecture.md)[https://github.com/igor-rosliakov-techwriter/Dockerized-Backend-Dev-Environment/blob/main/docs/01-architecture.md]
+Details: [docs/01-architecture.md](https://github.com/igor-rosliakov-techwriter/Dockerized-Backend-Dev-Environment/blob/main/docs/01-architecture.md)
 
 ## Operational documentation
 
