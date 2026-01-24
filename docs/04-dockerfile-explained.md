@@ -1,5 +1,7 @@
 # Dockerfile explained
 
+> This document uses terms defined in the [Glossary](https://github.com/igor-rosliakov-techwriter/Dockerized-Backend-Dev-Environment/blob/main/docs/glossary.md).
+
 This document explains the design decisions behind the Dockerfiles
 used for the API and worker services.
 
