@@ -42,7 +42,7 @@ Never run these commands in shared or production environments.
 - If Redis is failing: see _Scenario 4_
 - Restart services:
   ```bash
-  make restar
+  make restart
   ```
 
 ---
