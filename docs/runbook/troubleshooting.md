@@ -1,6 +1,9 @@
 # Runbook — Troubleshooting
 
-This runbook describes common failure scenarios in the local environment
+This runbook is written for developers working in a local environment.
+It assumes no prior knowledge of the system internals.
+
+Runbook describes common failure scenarios in the local environment
 and provides step-by-step recovery instructions.
 
 The goal is **fast diagnosis**, not deep root cause analysis.
@@ -64,7 +67,7 @@ Never run these commands in shared or production environments.
 2. Inspect Redis queue:
   ```bash
   docker compose exec redis redis-cli
-  LLEN jobs
+  LLEN ${REDIS_QUEUE_NAME}
   ```
 
 ### Likely causes
