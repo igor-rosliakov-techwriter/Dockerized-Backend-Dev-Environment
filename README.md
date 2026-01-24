@@ -116,12 +116,12 @@ Details: [docs/01-architecture.md](https://github.com/igor-rosliakov-techwriter/
 - Bash
 - Makefile
 
-## Project status
 
-✅ End-to-end flow implemented
-✅ Health checks and smoke tests
-✅ Documentation-first structure
-✅ Production-like local setup
+## Project scope
 
-This repository is intentionally kept small to make
-documentation quality and structure the main focus.
+This repository intentionally focuses on:
+
+- end-to-end request → queue → worker flow
+- health checks and dependency wiring
+- operational documentation (debugging, runbooks)
+- documentation quality over feature completeness
