@@ -1,5 +1,7 @@
 # Debugging
 
+> This document uses terms defined in the [Glossary](glossary.md).
+
 This document describes practical debugging steps for the local development
 environment defined in this repository.  
 The goal is to quickly understand **which component is failing** and **where to look next**.
@@ -14,7 +16,7 @@ The system consists of:
 
 ## Quick commands
 
-Most common commands are wrapped in `Makefile` targets:
+Most common commands are wrapped in [`Makefile`](glossary.md#makefile) targets:
 
 - View running services:
   ```bash
@@ -47,7 +49,7 @@ Most common commands are wrapped in `Makefile` targets:
 
 ## Step 1. Check API health
 
-The API exposes a single health endpoint:
+The API exposes a single [health endpoint](glossary.md#health-endpoint-health):
   ```
   curl http://localhost:8000/health
   ```
@@ -68,6 +70,8 @@ If `status` is `degraded`, inspect `details` to see which dependency is failing.
 ---
 
 ## Step 2. Verify task lifecycle via API
+
+> Task — see [glossary](https://github.com/igor-rosliakov-techwriter/Dockerized-Backend-Dev-Environment/blob/main/docs/glossary.md#task)
 
 Create a task:
   ``` bash
@@ -100,7 +104,7 @@ If the status stays `queued`, the worker is not consuming jobs.
 ## Step 3. Inspect worker logs
 
 The worker is responsible for:
-- consuming jobs from Redis;
+- consuming [jobs](glossary.md#job) from Redis;
 - updating task status in Postgres.
 
 Follow worker logs:
@@ -126,6 +130,8 @@ Errors here usually indicate:
 
 ## Step 4. Inspect Redis queue directly
 
+> Queue — see [glossary](glossary.md#queue)
+
 To inspect Redis manually:
   ```bash
   docker compose exec redis redis-cli
@@ -135,12 +141,12 @@ To inspect Redis manually:
 
 - Check queue length:
   ```bash
-  LLEN jobs
+  LLLEN ${REDIS_QUEUE_NAME}
   ```
 
 - Inspect queued jobs:
   ```bash
-  LRANGE jobs 0 10
+  LRANGE ${REDIS_QUEUE_NAME} 0 10
   ```
 
 If the queue grows but the worker is idle, focus on worker logs.
@@ -165,9 +171,9 @@ Check the tasks table and verify:
   
 ---
 
-##Smoke test as a debugging tool
+## Smoke test as a debugging tool
 
-The smoke test (`make smoke`) performs:
+The [smoke test](glossary.md#smoke-test) (`make smoke`) performs:
 1. API health check.
 2. Task creation.
 3. Polling until the task reaches done.
