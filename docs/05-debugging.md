@@ -7,10 +7,10 @@ environment defined in this repository.
 The goal is to quickly understand **which component is failing** and **where to look next**.
 
 The system consists of:
-- API (FastAPI)
-- Worker (background job processor)
-- Postgres (task storage)
-- Redis (job queue)
+- **API** (FastAPI)
+- **Worker** (background job processor)
+- **Postgres** (task storage)
+- **Redis** (job queue)
 
 ---
 
@@ -71,7 +71,7 @@ If `status` is `degraded`, inspect `details` to see which dependency is failing.
 
 ## Step 2. Verify task lifecycle via API
 
-> Task — see [glossary](https://github.com/igor-rosliakov-techwriter/Dockerized-Backend-Dev-Environment/blob/main/docs/glossary.md#task)
+> Task — see [glossary](glossary.md#task)
 
 Create a task:
   ``` bash
@@ -141,7 +141,7 @@ To inspect Redis manually:
 
 - Check queue length:
   ```bash
-  LLLEN ${REDIS_QUEUE_NAME}
+  LLEN ${REDIS_QUEUE_NAME}
   ```
 
 - Inspect queued jobs:
