@@ -1,5 +1,7 @@
 # Runbook — Troubleshooting
 
+> This document uses terms defined in the [Glossary](glossary.md).
+
 This runbook is written for developers working in a local environment.
 It assumes no prior knowledge of the system internals.
 
@@ -50,7 +52,7 @@ Never run these commands in shared or production environments.
 
 ---
 
-## Scenario 2. Worker is running but jobs are not processed
+## Scenario 2. Worker is running but Jobs are not processed
 
 ### Symptoms
 
